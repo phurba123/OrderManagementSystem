@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* global styles */
+
+/* universal selector */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: rgba(0,255,255,0.4);
+}
