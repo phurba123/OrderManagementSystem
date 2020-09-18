@@ -1,0 +1,39 @@
+<nav>
+    <h3>OMS-admin</h3>
+    <a (click)="signOut()">Sign Out</a>
+</nav>
+
+<main>
+
+    <!-- div for posting new product -->
+    <div id="post-div">
+
+        <form (ngSubmit)="submitProduct()">
+            <input type="text" placeholder="Id" [(ngModel)]="Id" name="Id">
+            <input type="text" placeholder="Name" [(ngModel)]="Name" name="Name" >
+            <input type="text" placeholder="ImageUrl" [(ngModel)]="Image" name="Image">
+            <input type="number" placeholder="Price" [(ngModel)]="Price" name="Price">
+
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <!-- div for displaying all products -->
+    <div id="show-div" *ngIf="allProducts">
+
+        <div class="product-card" *ngFor="let product of allProducts">
+            <h3 class="card-header">{{product.Name}}</h3>
+
+            <div class="card-body">
+                <img src="{{product.Image}}" alt="item-image">
+            </div>
+
+            <div class="card-footer">
+                <p>Price : {{product.Price}}</p>
+                <button>Delete</button>
+            </div>
+        </div>
+
+    </div>
+</main>
+

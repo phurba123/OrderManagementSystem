@@ -29,18 +29,40 @@ export class SigninComponent implements OnInit {
           // on login successfull,save token and userid locally
           localStorage.setItem('at',apiresponse['data']['authToken']);
           localStorage.setItem('id',apiresponse['data']['userDetails']['userId']);
+          localStorage.setItem('user',apiresponse['data']['userDetails']['username'])
 
-          // navigate to home component
-          setTimeout(()=>
+          // if user is admin then navigate to admin dashboard
+          if(this.isAdmin(apiresponse['data']['userDetails']['username']))
           {
+            this.router.navigate(['/admin/home'])
+          }
+          else
+          {
+            // navigate to home component
             this.router.navigate(['/home'])
-          },1000)
+          }
         }
       },
       (err)=>
       {
         console.log('err : ',err)
       })
+    }
+  }
+
+  //check if user is admin or not
+  public isAdmin(userName): boolean {
+    let name = userName;
+    //to check if userName ends with admin or not
+    let indexToSlice = (name.length - 5);//for getting substring with last 5 character
+    let slicedUserName = name.slice(indexToSlice);
+    //console.log(slicedUserName)
+
+    if (slicedUserName === 'admin' || slicedUserName === 'Admin') {
+      return true;
+    }
+    else {
+      return false;
     }
   }
 

@@ -32,4 +32,10 @@ export class UserService {
 
     return this.http.post(`${this.baseUri}/signin`,params);
   }
+
+  // sign out
+  public signOut(authToken):Observable<any>
+  {
+    return this.http.post(`${this.baseUri}/signout?authToken=${authToken}`,{});
+  }
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserManagementModule } from './user-management/user-management.module';
 import {HttpClientModule} from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AdminModule } from './admin/admin.module';
 // import {FormsModule} from '@angular/forms'
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AppRoutingModule,
     UserManagementModule,
     HttpClientModule,
-    DashboardModule
+    DashboardModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

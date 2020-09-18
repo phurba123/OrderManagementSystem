@@ -1,0 +1,39 @@
+nav
+{
+    display: flex;
+    background-color: aqua;
+    height: 8vh;
+    max-height: 8vh;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+nav h3
+{
+    flex-basis: 30%;
+}
+
+nav div
+{
+    flex-basis: 20%;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav div a
+{
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(0,0,0,0.7);
+}
+
+nav div a:hover
+{
+    color: rgba(0,0,0,1);
+    transition: color 200ms ease;
+}
+
+nav div a.active
+{
+    color: rgba(0,0,0,1);
+}
