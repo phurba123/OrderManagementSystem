@@ -1,0 +1,63 @@
+main
+{
+    margin: 4vh auto;
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+
+.product-card
+{
+    height: 40vh;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 1rem;
+}
+
+.card-header
+{
+    text-align: center;
+}
+
+.card-body
+{
+    height: 60%;
+    width: 80%;
+    margin: 1vh auto;
+}
+
+.card-body img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.card-footer
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4vh;
+}
+
+.card-footer p
+{
+    color: rgba(0,0,0,0.8);
+    padding-top: 0.5rem;
+}
+
+.card-footer button
+{
+    background-color: rgba(200,20,20,0.7);
+    outline: none;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.card-footer button:hover
+{
+    background-color: rgba(200,20,20,1);
+    transition: all 200ms ease;
+}

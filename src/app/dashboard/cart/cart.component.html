@@ -1,1 +1,46 @@
 <app-nav [active]="'cart'"></app-nav>
+
+<div id="clear-div">
+    <button (click)="clearCarts()">Clear cart</button>
+</div>
+<h3 id="heading">My Cart</h3>
+
+<main *ngIf="carts">
+
+    <div id="products-detail">
+        <div class="product-detail" *ngFor="let cart of carts">
+
+            <h3>{{cart.productName}}</h3>
+            <div>
+                <img src="{{cart.productImage}}" alt="image">
+            </div>
+            <p>Price : {{cart.productPrice}}</p>
+
+        </div>
+    </div>
+
+    <div id="order-detail">
+        <p>Total : $ {{totalPrice}}</p>
+        <button (click)="orderNow()">Order Now</button>
+    </div>
+</main>
+
+    <p *ngIf="!carts" id="empty-card-msg">Your cart is empty
+    </p>
+
+<!-- show when order is made -->
+<div *ngIf="transactionDetail" id="transaction-detail" class="b-shadow">
+    <h3>Transaction Successfull</h3>
+    <p><span>Transaction id : </span> {{transactionDetail.transactionId}}</p>
+
+    <h3>Order details</h3>
+    <div *ngFor="let product of transactionDetail.products">
+        <p>{{product.productName}}</p>
+        <p>{{product.productPrice}}</p>
+    </div>
+
+    <div>
+        <p>Total Price : </p>
+        <p>{{transactionDetail.totalPrice}}</p>
+    </div>
+</div>
