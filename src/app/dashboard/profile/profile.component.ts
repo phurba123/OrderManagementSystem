@@ -11,6 +11,8 @@ export class ProfileComponent implements OnInit {
   private token;
   public transactions:any;
 
+  private subscriptions:any[]=[];
+
   constructor(
     private cartService:CartService
   ) { }
@@ -26,7 +28,7 @@ export class ProfileComponent implements OnInit {
   {
     if(this.token)
     {
-      this.cartService.getAllTransactions(this.token).subscribe((apiresponse)=>
+      let sub = this.cartService.getAllTransactions(this.token).subscribe((apiresponse)=>
       {
         if(apiresponse['status']===200)
         {
@@ -41,8 +43,19 @@ export class ProfileComponent implements OnInit {
       (err)=>
       {
         console.log(err)
-      })
+      });
+
+      this.subscriptions.push(sub);
     }
+  }
+
+
+  ngOnDestroy()
+  {
+    this.subscriptions.forEach((sub)=>
+    {
+      sub.unsubscribe();
+    })
   }
 
 }

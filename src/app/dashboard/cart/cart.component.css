@@ -161,7 +161,15 @@ main
 
     #empty-card-msg
     {
-        left:32vw;
+        position: static;
+        margin-top: 4vh;
+        text-align: center;
+    }
+
+    #transaction-detail
+    {
+        width: 98%;
+        margin-top: 4vh;
     }
 }
 
@@ -174,5 +182,18 @@ main
 
     #order-detail{
         flex-basis: 40%;
+    }
+
+    #empty-card-msg
+    {
+        position: static;
+        margin-top: 4vh;
+        text-align: center;
+    }
+
+    #transaction-detail
+    {
+        width: 80%;
+        margin: 4vh auto;
     }
 }

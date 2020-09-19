@@ -3,6 +3,7 @@ import  {Router} from '@angular/router';
 import { ProductsService } from 'src/app/products.service';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner'
 import { CartService } from 'src/app/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,14 @@ export class HomeComponent implements OnInit {
   private token;
   private userId;
 
+  private subscriptions:any[]=[]
+
   constructor(
     private router:Router,
     private productService:ProductsService,
     private spinner:Ng4LoadingSpinnerService,
-    private cartService:CartService
+    private cartService:CartService,
+    private Toastr:ToastrService
   ) {}
 
   ngOnInit() {
@@ -52,7 +56,7 @@ export class HomeComponent implements OnInit {
 
     if(token)
     {
-      this.productService.getAllProducts(token).subscribe((response)=>
+      let sub = this.productService.getAllProducts(token).subscribe((response)=>
       {
         console.log(response)
         if(response['status']===200)
@@ -67,13 +71,16 @@ export class HomeComponent implements OnInit {
         }
         else
         {
-          console.log(response)
+          // console.log(response)
+          this.Toastr.warning(response['message'])
         }
       },
       (err)=>
       {
         console.log('err : ',err)
-      })
+      });
+
+      this.subscriptions.push(sub);
     }
   }
 
@@ -91,26 +98,36 @@ export class HomeComponent implements OnInit {
         Image:product.Image,
         Price:product.Price
       }
-      this.cartService.addProductToCart(data).subscribe((apiresponse)=>
+      let sub = this.cartService.addProductToCart(data).subscribe((apiresponse)=>
       {
         if(apiresponse['status']===200)
         {
-          console.log('product added : ',apiresponse)
+          // console.log('product added : ',apiresponse);
+          //show toast message
+          this.Toastr.success('Added to cart')
         }
         else
         {
-          console.log(apiresponse)
+          // console.log(apiresponse)
+          this.Toastr.warning(apiresponse['message'])
         }
       },
       (err)=>
       {
         console.log('err : ',err)
-      })
+      });
+
+      this.subscriptions.push(sub)
     }
   }
 
   ngOnDestroy()
   {
+    // unsubscribe
+    this.subscriptions.forEach((sub)=>
+    {
+      sub.unsubscribe()
+    })
   }
 
 }

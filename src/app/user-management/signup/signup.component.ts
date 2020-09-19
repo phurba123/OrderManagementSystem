@@ -13,6 +13,8 @@ export class SignupComponent implements OnInit {
   public password:string;
   public mobile:any;
 
+  private subs:any[]=[];
+
   constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class SignupComponent implements OnInit {
         mobile:this.mobile,
         username:this.username
       }
-      this.userService.signup(data).subscribe((apiresponse)=>
+      let sub = this.userService.signup(data).subscribe((apiresponse)=>
       {
         if(apiresponse['status']===200)
         {
@@ -44,12 +46,22 @@ export class SignupComponent implements OnInit {
       (err)=>
       {
         console.log('err : ',err)
-      })
+      });
+
+      this.subs.push(sub)
     }
     else
     {
       console.log('not sufficient data')
     }
+  }
+
+  ngOnDestroy()
+  {
+    this.subs.forEach((sub)=>
+    {
+      sub.unsubscribe();
+    })
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -13,8 +14,11 @@ export class CartComponent implements OnInit {
 
   public transactionDetail:any;
 
+  private subscriptions:any[]=[];
+
   constructor(
-    private cartService:CartService
+    private cartService:CartService,
+    private toastr:ToastrService
   ) {}
 
   ngOnInit() {
@@ -28,7 +32,7 @@ export class CartComponent implements OnInit {
   {
     if(this.token)
     {
-      this.cartService.getCartDetails(this.token).subscribe((response)=>
+      let sub = this.cartService.getCartDetails(this.token).subscribe((response)=>
       {
         if(response['status']===200)
         {
@@ -48,7 +52,9 @@ export class CartComponent implements OnInit {
       (err)=>
       {
         console.log(err);
-      })
+      });
+
+      this.subscriptions.push(sub);
     }
   }
 
@@ -76,7 +82,7 @@ export class CartComponent implements OnInit {
   {
     if(this.token)
     {
-      this.cartService.clearCarts(this.token).subscribe((apiresponse)=>
+      let sub = this.cartService.clearCarts(this.token).subscribe((apiresponse)=>
       {
         console.log(apiresponse)
         if(apiresponse['status']===200)
@@ -92,7 +98,9 @@ export class CartComponent implements OnInit {
       (err)=>
       {
         console.log('err : ',err)
-      })
+      });
+
+      this.subscriptions.push(sub);
     }
   }
 
@@ -101,7 +109,7 @@ export class CartComponent implements OnInit {
   {
     console.log(JSON.stringify(this.carts));
     let data = JSON.stringify(this.carts)
-    this.cartService.makeNewOrder(data,this.token,this.totalPrice).subscribe((apiresponse)=>
+    let sub = this.cartService.makeNewOrder(data,this.token,this.totalPrice).subscribe((apiresponse)=>
     {
       console.log(apiresponse);
 
@@ -109,18 +117,34 @@ export class CartComponent implements OnInit {
       {
         setTimeout(()=>
         {
+          this.toastr.success('Order Successfull');
           this.clearCarts();
+
+          // showing dummy transaction detail
           this.transactionDetail=apiresponse['data'];
         },1500)
       }
       else
       {
-        console.log(apiresponse)
+        this.toastr.warning(apiresponse['message'])
       }
     },
     (err)=>
     {
       console.log(err)
+    });
+
+    this.subscriptions.push(sub);
+  }
+
+
+  // 
+  ngOnDestroy()
+  {
+    // unsubscribe from all subscriptions
+    this.subscriptions.forEach((sub)=>
+    {
+      sub.unsubscribe();
     })
   }
 

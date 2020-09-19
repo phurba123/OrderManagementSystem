@@ -38,4 +38,13 @@ export class UserService {
   {
     return this.http.post(`${this.baseUri}/signout?authToken=${authToken}`,{});
   }
+
+  // reset password
+  public resetPassword(email):Observable<any>
+  {
+    let params = new HttpParams()
+    .set('email',email);
+
+    return this.http.post(`${this.baseUri}/reset/password`,params);
+  }
 }

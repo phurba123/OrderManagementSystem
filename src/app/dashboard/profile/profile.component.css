@@ -52,7 +52,9 @@ main #body
 #transaction-detail #transactiondetail-middle div
 {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
 }
 
 @media screen and (max-width:500px)
@@ -85,4 +87,12 @@ main #body
         flex-basis: 50%;
     }
 
+}
+
+@media screen and (min-width:501px) and (max-width:760px)
+{
+    #transaction-detail #transactiondetail-middle div
+    {
+        width: 80%;
+    }
 }
