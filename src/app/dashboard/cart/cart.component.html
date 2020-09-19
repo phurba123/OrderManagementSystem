@@ -3,11 +3,11 @@
 <div id="clear-div">
     <button (click)="clearCarts()">Clear cart</button>
 </div>
-<h3 id="heading">My Cart</h3>
+<h3 id="heading" class="h-font m-color">My Cart</h3>
 
 <main *ngIf="carts">
 
-    <div id="products-detail">
+    <div id="products-detail" class="p-font">
         <div class="product-detail" *ngFor="let cart of carts">
 
             <h3>{{cart.productName}}</h3>
@@ -19,27 +19,27 @@
         </div>
     </div>
 
-    <div id="order-detail">
+    <div id="order-detail" class="p-font">
         <p>Total : $ {{totalPrice}}</p>
         <button (click)="orderNow()">Order Now</button>
     </div>
 </main>
 
-    <p *ngIf="!carts" id="empty-card-msg">Your cart is empty
+    <p *ngIf="!carts" id="empty-card-msg" class="p-font">Your cart is empty
     </p>
 
 <!-- show when order is made -->
 <div *ngIf="transactionDetail" id="transaction-detail" class="b-shadow">
-    <h3>Transaction Successfull</h3>
-    <p><span>Transaction id : </span> {{transactionDetail.transactionId}}</p>
+    <h3 class="h-font">Transaction Successfull</h3>
+    <p class="p-font"><span>Transaction id : </span> {{transactionDetail.transactionId}}</p>
 
-    <h3>Order details</h3>
-    <div *ngFor="let product of transactionDetail.products">
+    <h3 class="h-font">Order details</h3>
+    <div *ngFor="let product of transactionDetail.products" class="p-font">
         <p>{{product.productName}}</p>
         <p>{{product.productPrice}}</p>
     </div>
 
-    <div>
+    <div class="p-font">
         <p>Total Price : </p>
         <p>{{transactionDetail.totalPrice}}</p>
     </div>

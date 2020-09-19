@@ -1,0 +1,88 @@
+main
+{
+    margin-top: 4vh;
+    padding: 1rem;
+}
+
+main #title
+{
+    margin-top: 8vh;
+    text-align: center;
+}
+
+main #body
+{
+    margin: 4vh auto;
+    width: 90%;
+}
+
+#no-transaction
+{
+    color: red;
+    text-align: center;
+    margin-top: 8vh;
+}
+
+#transaction-detail
+{
+    display: flex;
+    width: 100%;
+    margin-top: 6vh;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+#transaction-detail #transactiondetail-left
+{
+    flex-basis: 30%;
+}
+
+#transaction-detail #transactiondetail-middle
+{
+    flex-basis: 40%;
+}
+
+#transaction-detail #transactiondetail-right
+{
+    flex-basis: 30%;
+}
+
+#transaction-detail #transactiondetail-middle div
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width:500px)
+{
+
+    main{
+        padding: 0.3rem;
+    }
+    main #body
+    {
+        width: 100%;
+    }
+
+    #transaction-detail
+    {
+        text-align:start;
+        padding: 0.3rem;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    #transaction-detail #transactiondetail-left
+    {
+        flex-basis: 100%;
+        margin-bottom: 2vh;
+    }
+
+    #transaction-detail #transactiondetail-middle,#transaction-detail #transactiondetail-right
+    {
+        flex-basis: 50%;
+    }
+
+}

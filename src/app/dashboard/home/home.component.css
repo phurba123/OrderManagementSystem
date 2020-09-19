@@ -38,6 +38,7 @@ main
     display: flex;
     justify-content: space-between;
     margin-top: 4vh;
+    width: 100%;
 }
 
 .card-footer p
@@ -60,4 +61,32 @@ main
 {
     background-color: rgba(200,20,20,1);
     transition: all 200ms ease;
+}
+
+/* media queries */
+@media screen and (max-width:500px)
+{
+    main
+    {
+        margin: 4vh auto;
+        width: 98%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+@media screen and (min-width:501px) and (max-width:760px)
+{
+    main{
+        width: 80%;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (min-width:761px) and (max-width:1050px)
+{
+    main{
+        width: 80%;
+    }
 }

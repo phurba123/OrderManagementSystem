@@ -1,10 +1,10 @@
 <nav>
     <h3>OMS</h3>
-    <a [routerLink]="['/signin']">Sign In</a>
+    <a [routerLink]="['/signin']" id="signIn" class="p-font">Sign In</a>
 </nav>
 
 <main>
-    <div id="signup-div">
+    <div id="signup-div"  class="p-font">
 
         <form #signupform (ngSubmit)="signUp()">
             <input type="text" placeholder="username" [(ngModel)]="username" name="username" required>

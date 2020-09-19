@@ -141,3 +141,38 @@ main
     top:20vh;
     left:45vw;
 }
+
+
+@media screen and (max-width:500px)
+{
+    #products-detail
+    {
+        flex-basis: 90%;
+        max-height: 80vh;
+        margin: 0 auto;
+    }
+
+    #order-detail
+    {
+        flex-basis: 80%;
+        margin: 2vh auto;
+        border-top: 1px solid rgba(0,0,0,0.2);
+    }
+
+    #empty-card-msg
+    {
+        left:32vw;
+    }
+}
+
+@media screen and (min-width:501px) and (max-width:760px)
+{
+    #products-detail
+    {
+        flex-basis:60%
+    }
+
+    #order-detail{
+        flex-basis: 40%;
+    }
+}

@@ -19,3 +19,24 @@ body
 {
     box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
 }
+
+.h-font
+{
+    font-family: 'Rubik', sans-serif;
+}
+
+.p-font
+{
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.m-color
+{
+    color:rgba(167,87,18,1)
+}
+
+.s-color
+{
+   color: rgba(125,125,125,1)
+}

@@ -1,11 +1,12 @@
 <nav>
     <h3>OMS</h3>
 
-    <div>
+    <div class="p-font">
         <a [ngClass]="active==='products'?'active':''" [routerLink]="['/home']">Products</a>
         <a [ngClass]="active==='cart'?'active':''" [routerLink]="['/cart']">Carts</a>
         <a [ngClass]="active==='profile'?'active':''" [routerLink]="['/profile']">My Profile</a>
     </div>
 
-    <a (click)="signOut()">SignOut</a>
+    <a id="signout" (click)="signOut()" class="p-font">SignOut</a>
 </nav>
+

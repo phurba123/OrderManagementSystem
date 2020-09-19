@@ -1,1 +1,34 @@
 <app-nav [active]="'profile'"></app-nav>
+
+<main>
+
+    <div id="header">
+        <p class="p-font">Hello <span class="h-font m-color">{{username}}</span></p>
+    </div>
+
+    <p id="title" class="h-font m-color">Your transaction details</p>
+
+    <div id="body" *ngIf="transactions" class="s-color">
+        <div *ngFor="let transaction of transactions" id="transaction-detail" class="b-shadow p-font">
+            <div id="transactiondetail-left">
+                <p><span>Transaction id : </span> {{transaction.transactionId}}</p>
+            </div>
+
+            <div id="transactiondetail-middle">
+                <div *ngFor="let product of transaction.products">
+                    <p>{{product.productName}}</p>
+                    <p>{{product.productPrice}}</p>
+                </div>
+            </div>
+
+
+            <div id="transactiondetail-right">
+                <p>Total Price : <span>{{transaction.totalPrice}}</span></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div *ngIf="!transactions" id="no-transaction">
+    No transactions yet
+</div>

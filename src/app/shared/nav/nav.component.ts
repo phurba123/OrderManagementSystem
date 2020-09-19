@@ -25,7 +25,10 @@ export class NavComponent implements OnInit {
     {
       if(response['status']===200)
       {
-        this.router.navigate(['/signin'])
+        this.router.navigate(['/signin']);
+
+        // on sign out, clear local storages
+        localStorage.clear()
       }
     },
     (err)=>

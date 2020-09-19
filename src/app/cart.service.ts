@@ -49,4 +49,10 @@ export class CartService {
     .set('totalPrice',totalPrice)
     return this.http.post(`${this.transactionUri}/new`,params);
   }
+
+  // getting all transactions of a user
+  public getAllTransactions(authToken):Observable<any>
+  {
+    return this.http.get(`${this.transactionUri}/all?authToken=${authToken}`);
+  }
 }

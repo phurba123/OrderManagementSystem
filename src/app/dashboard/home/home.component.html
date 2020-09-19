@@ -3,13 +3,13 @@
 <main *ngIf="allProducts">
 
     <div class="product-card b-shadow" *ngFor="let product of allProducts">
-        <h3 class="card-header">{{product.Name}}</h3>
+        <h3 class="card-header h-font m-color">{{product.Name}}</h3>
 
         <div class="card-body">
             <img src="{{product.Image}}" alt="item-image">
         </div>
 
-        <div class="card-footer">
+        <div class="card-footer p-font">
             <p>Price : {{product.Price}}</p>
             <button (click)="addToCart(product)">Add to Cart</button>
         </div>

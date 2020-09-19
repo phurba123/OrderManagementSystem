@@ -3,9 +3,9 @@ nav
     display: flex;
     background-color: aqua;
     height: 8vh;
-    max-height: 8vh;
     padding: 1rem;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 nav h3
@@ -29,16 +29,69 @@ nav div a
 {
     cursor: pointer;
     text-decoration: none;
-    color: rgba(0,0,0,0.7);
+    color: rgba(167,87,18,0.7);
 }
 
 nav div a:hover
 {
-    color: rgba(0,0,0,1);
+    color: rgba(167,87,18,1);
     transition: color 200ms ease;
 }
 
 nav div a.active
 {
-    color: rgba(0,0,0,1);
+    color: rgba(167,87,18,1);
+}
+
+#signout
+{
+    color:rgba(167,87,18,0.8)
+}
+#signout:hover
+{
+    color:rgba(167,87,18,1)
+}
+
+@media screen and (max-width:500px)
+{
+    nav{
+        height: 10vh;
+        padding: 0.5rem;
+        font-size: 14px;
+    }
+
+    nav h3{
+        flex-basis: 100%;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    nav div
+    {
+        flex-basis: 80%;
+    }
+
+}
+
+@media screen and (min-width:501px) and (max-width:760px)
+{
+    nav{
+        font-size: 16px;
+    }
+    nav h3{
+        flex-basis: 20%;
+        font-size: 1rem;
+    }
+
+    nav div{
+        flex-basis: 60%;
+    }
+}
+
+@media screen and (min-width:761px) and (max-width:1050px)
+{
+    nav div
+    {
+        flex-basis: 30%;
+    }
 }

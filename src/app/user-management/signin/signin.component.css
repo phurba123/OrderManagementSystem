@@ -10,7 +10,13 @@ nav a
 {
     cursor: pointer;
     text-decoration: none;
-    color: black;
+    color:rgba(167,87,18,0.8)
+}
+
+nav a:hover
+{
+    color: rgba(167,87,18,1);
+    transition: color 200ms ease;
 }
 
 main
@@ -63,5 +69,12 @@ main
 {
     main{
         width: 98%;
+    }
+}
+
+@media screen and (max-width:760px)
+{
+    main{
+        width: 80%;
     }
 }
